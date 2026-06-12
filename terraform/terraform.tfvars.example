@@ -1,0 +1,17 @@
+# OCI Authentication
+
+tenancy_ocid     = "ocid1.tenancy.oc1..xxxxxxxxxxxxxxxx"
+user_ocid        = "ocid1.user.oc1..xxxxxxxxxxxxxxxx"
+fingerprint      = "aa:bb:cc:dd:ee:ff:11:22:33:44:55:66:77:88:99:00"
+
+private_key_path = "~/.oci/oci_api_key.pem"
+
+region           = "us-chicago-1"
+
+# Compartment
+
+compartment_ocid = "ocid1.compartment.oc1..xxxxxxxxxxxxxxxx"
+
+# SSH Public Key
+
+ssh_public_key = "ssh-ed25519 AAAA...your-public-key..."

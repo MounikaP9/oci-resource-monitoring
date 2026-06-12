@@ -32,6 +32,7 @@ resource "oci_core_security_list" "public_sl" {
   vcn_id       = oci_core_vcn.main.id
   display_name = "public-security-list"
 
+  # SSH
   ingress_security_rules {
     protocol = "6"
 
@@ -40,6 +41,18 @@ resource "oci_core_security_list" "public_sl" {
     tcp_options {
       min = 22
       max = 22
+    }
+  }
+
+  # Node Exporter
+  ingress_security_rules {
+    protocol = "6"
+
+    source = "0.0.0.0/0"
+
+    tcp_options {
+      min = 9100
+      max = 9100
     }
   }
 
@@ -63,4 +76,3 @@ resource "oci_core_subnet" "public_subnet" {
 
   prohibit_public_ip_on_vnic = false
 }
-

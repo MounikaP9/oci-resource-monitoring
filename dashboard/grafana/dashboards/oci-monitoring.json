@@ -1,0 +1,16 @@
+{
+  "annotations": {
+    "list": []
+  },
+  "editable": true,
+  "panels": [],
+  "schemaVersion": 38,
+  "style": "dark",
+  "tags": [
+    "oci",
+    "monitoring",
+    "prometheus"
+  ],
+  "title": "OCI Resource Monitoring Dashboard",
+  "version": 1
+}

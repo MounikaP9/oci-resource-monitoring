@@ -20,6 +20,75 @@ This project uses Terraform to provision Oracle Cloud Infrastructure (OCI) resou
 - OCI CLI
 - GitHub
 
+# OCI Resource Monitoring
+
+Infrastructure and monitoring solution built on Oracle Cloud Infrastructure (OCI).
+
+## Components
+
+### Terraform
+
+Provision OCI resources:
+
+* VCN
+* Subnet
+* Internet Gateway
+* Security Lists
+* Compute Instance
+* Block Volume
+
+### Monitoring Stack
+
+Prometheus + Grafana
+
+Metrics collected:
+
+* CPU Usage
+* Memory Usage
+* Disk Usage
+* Filesystem Utilization
+* Network Traffic
+* System Load
+
+### Architecture
+
+OCI Compute Instance
+→ Node Exporter
+→ Prometheus
+→ Grafana Dashboard
+
+### Project Structure
+
+terraform/
+
+* OCI infrastructure code
+
+dashboard/
+
+* Prometheus configuration
+* Grafana provisioning
+* Dashboard definitions
+
+## Run Monitoring Stack
+
+cd dashboard
+
+docker compose up -d
+
+Grafana:
+http://localhost:3000
+
+Prometheus:
+http://localhost:9090
+
+## Future Enhancements
+
+* Multi-instance monitoring
+* Alertmanager integration
+* OCI Monitoring API integration
+* Email and Slack alerts
+
+
 ## Project Structure
 
 ```text
