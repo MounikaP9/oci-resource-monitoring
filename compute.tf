@@ -7,12 +7,12 @@ resource "oci_core_instance" "linux_vm" {
 
   display_name = "linux-vm-${count.index + 1}"
 
-shape = "VM.Standard.A1.Flex"
+  shape = "VM.Standard.E5.Flex"
 
-shape_config {
-  ocpus         = 1
-  memory_in_gbs = 2
-}
+  shape_config {
+    ocpus         = 1
+    memory_in_gbs = 4
+  }
 
   create_vnic_details {
     subnet_id        = oci_core_subnet.public_subnet.id
@@ -20,15 +20,21 @@ shape_config {
   }
 
   source_details {
-  source_type = "image"
+    source_type = "image"
 
-  source_id = data.oci_core_images.oracle_linux_a1.images[0].id
+    source_id = data.oci_core_images.autonomous_linux.images[0].id
 
-  boot_volume_size_in_gbs = 50
-}
+    boot_volume_size_in_gbs = 50
+  }
+
+  preemptible_instance_config {
+    preemption_action {
+      type                 = "TERMINATE"
+      preserve_boot_volume = false
+    }
+  }
 
   metadata = {
     ssh_authorized_keys = var.ssh_public_key
   }
 }
-
