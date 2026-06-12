@@ -1,0 +1,18 @@
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+.terraform.lock.hcl
+
+# Terraform plans
+*.tfplan
+
+# OCI credentials
+*.pem
+*.key
+
+# Mac
+.DS_Store
+
+# Variables
+terraform.tfvars
