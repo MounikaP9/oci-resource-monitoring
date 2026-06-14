@@ -1,7 +1,7 @@
 resource "oci_core_vcn" "main" {
   compartment_id = var.compartment_ocid
 
-  cidr_block   = "10.0.0.0/16"
+  cidr_block   = var.vcn_cidr_block
   display_name = "terraform-vcn"
 }
 
@@ -36,7 +36,7 @@ resource "oci_core_security_list" "public_sl" {
   ingress_security_rules {
     protocol = "6"
 
-    source = "0.0.0.0/0"
+    source = var.ssh_ingress_cidr
 
     tcp_options {
       min = 22
@@ -48,7 +48,7 @@ resource "oci_core_security_list" "public_sl" {
   ingress_security_rules {
     protocol = "6"
 
-    source = "0.0.0.0/0"
+    source = var.node_exporter_ingress_cidr
 
     tcp_options {
       min = 9100
@@ -67,7 +67,7 @@ resource "oci_core_subnet" "public_subnet" {
 
   vcn_id = oci_core_vcn.main.id
 
-  cidr_block = "10.0.1.0/24"
+  cidr_block = var.public_subnet_cidr_block
 
   route_table_id    = oci_core_route_table.public_rt.id
   security_list_ids = [oci_core_security_list.public_sl.id]

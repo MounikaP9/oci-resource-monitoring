@@ -4,6 +4,11 @@ terraform {
       source  = "oracle/oci"
       version = "~> 7.0"
     }
+
+    local = {
+      source  = "hashicorp/local"
+      version = "~> 2.5"
+    }
   }
 }
 

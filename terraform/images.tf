@@ -4,7 +4,7 @@ data "oci_core_images" "autonomous_linux" {
   operating_system         = "Oracle Autonomous Linux"
   operating_system_version = "9"
 
-  shape = "VM.Standard.E5.Flex"
+  shape = var.instance_shape
 
   sort_by    = "TIMECREATED"
   sort_order = "DESC"

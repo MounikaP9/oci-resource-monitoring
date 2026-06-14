@@ -1,17 +1,17 @@
 resource "oci_core_instance" "linux_vm" {
 
-  count = 1
+  count = var.instance_count
 
   compartment_id      = var.compartment_ocid
   availability_domain = var.availability_domain
 
-  display_name = "linux-vm-${count.index + 1}"
+  display_name = "${var.instance_name_prefix}-${count.index + 1}"
 
-  shape = "VM.Standard.E5.Flex"
+  shape = var.instance_shape
 
   shape_config {
-    ocpus         = 1
-    memory_in_gbs = 4
+    ocpus         = var.instance_ocpus
+    memory_in_gbs = var.instance_memory_in_gbs
   }
 
   create_vnic_details {
@@ -24,7 +24,7 @@ resource "oci_core_instance" "linux_vm" {
 
     source_id = data.oci_core_images.autonomous_linux.images[0].id
 
-    boot_volume_size_in_gbs = 50
+    boot_volume_size_in_gbs = var.boot_volume_size_in_gbs
   }
 
   preemptible_instance_config {
@@ -36,5 +36,9 @@ resource "oci_core_instance" "linux_vm" {
 
   metadata = {
     ssh_authorized_keys = var.ssh_public_key
+
+    user_data = base64encode(templatefile("${path.module}/cloud-init.sh", {
+      node_exporter_version = var.node_exporter_version
+    }))
   }
 }

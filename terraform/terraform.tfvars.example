@@ -15,3 +15,25 @@ compartment_ocid = "ocid1.compartment.oc1..xxxxxxxxxxxxxxxx"
 # SSH Public Key
 
 ssh_public_key = "ssh-ed25519 AAAA...your-public-key..."
+
+# Compute Instances
+
+availability_domain = "xxxx:US-CHICAGO-1-AD-1"
+
+instance_count          = 3
+instance_name_prefix    = "monitoring-node"
+instance_shape          = "VM.Standard.E5.Flex"
+instance_ocpus          = 1
+instance_memory_in_gbs  = 4
+boot_volume_size_in_gbs = 50
+
+# Network
+
+vcn_cidr_block           = "10.0.0.0/16"
+public_subnet_cidr_block = "10.0.1.0/24"
+ssh_ingress_cidr         = "0.0.0.0/0"
+node_exporter_ingress_cidr = "0.0.0.0/0"
+
+# Monitoring Agent
+
+node_exporter_version = "1.9.1"

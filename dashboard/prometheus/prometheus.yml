@@ -6,4 +6,20 @@ scrape_configs:
 
     static_configs:
       - targets:
-          - "163.192.204.215:9100"
+          - "131.186.4.135:9100"
+        labels:
+          instance_name: "monitoring-node-1"
+          private_ip: "10.0.1.238"
+          oci_instance_id: "ocid1.instance.oc1.us-chicago-1.anxxeljruxkoeniccmdbtpmuwos3pcbshl5jvkjob6nax74cxn6j2ht6dmgq"
+      - targets:
+          - "147.224.130.176:9100"
+        labels:
+          instance_name: "monitoring-node-2"
+          private_ip: "10.0.1.245"
+          oci_instance_id: "ocid1.instance.oc1.us-chicago-1.anxxeljruxkoenic6aahjumixa6uyvom74ab7tduavj3uwvvc22ztloihkiq"
+      - targets:
+          - "147.224.166.128:9100"
+        labels:
+          instance_name: "monitoring-node-3"
+          private_ip: "10.0.1.21"
+          oci_instance_id: "ocid1.instance.oc1.us-chicago-1.anxxeljruxkoenicpo5jcyurpo3jvpwyozm64jgk25zkiyaq6seo65hp5dnq"
